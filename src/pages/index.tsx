@@ -1,4 +1,4 @@
-import Tarefa from "../model/Tarefas";
+import Tarefa from "../model/Tarefa";
 
 export default function Home() {
 
