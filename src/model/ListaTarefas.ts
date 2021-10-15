@@ -22,6 +22,35 @@ export default class ListaTarefas {
         return this.#filtroUtilizado;
     }
 
+    excluirConcluidas() {
+        const somenteAtivas = this.#todas.filter(tarefa => tarefa.ativa);
+        return new ListaTarefas(somenteAtivas, TipoFiltro.NENHUM);
+    }
+
+    filtrarAtivas() {
+        if (!this.exibindoSomenteAtivas()) {
+            return new ListaTarefas(this.#todas, TipoFiltro.ATIVAS);
+        } else {
+            return this;
+        }
+    }
+
+    filtrarConcluidas() {
+        if (!this.exibindoSomenteConcluidas()) {
+            return new ListaTarefas(this.#todas, TipoFiltro.CONCLUIDAS);
+        } else {
+            return this;
+        }
+    }
+
+    removerFiltro() {
+        if (!this.exibindoTodas()) {
+            return new ListaTarefas(this.#todas, TipoFiltro.NENHUM);
+        } else {
+            return this;
+        }
+    }
+
     exibindoTodas(): boolean {
         return this.#filtroUtilizado === TipoFiltro.NENHUM;
     }

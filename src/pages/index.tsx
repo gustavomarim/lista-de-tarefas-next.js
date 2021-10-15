@@ -1,9 +1,25 @@
 import Tarefa from "../model/Tarefa";
+import tarefasIniciais from "../data/mock";
 
 export default function Home() {
 
-  let tarefa: Tarefa = new Tarefa(1, "Exemplo de Tarefa");
-  tarefa = tarefa.alternarStatus();
+  let tarefas = tarefasIniciais;
+  tarefas = tarefas.filtrarAtivas();
+  tarefas = tarefas.filtrarConcluidas();
+  // tarefas = tarefas.removerFiltro();
+  tarefas = tarefas.excluirConcluidas();
+
+  function renderizarTarefas() {
+    return tarefas.itens.map(tarefa => {
+      return (
+        <div key={tarefa.id}>
+          <span> {tarefa.id} | </span>
+          <span> {tarefa.descricao} | </span>
+          <span> {tarefa.concluida ? "Concluída" : "Ativa" }</span>
+        </div>
+      )
+    })
+  }
 
   return (
     <div className={`
@@ -12,9 +28,7 @@ export default function Home() {
       bg-gradient-to-tr from-purple-500  to-yellow-600
       h-screen
     `}>
-      <span>{tarefa.id}</span>
-      <span>{tarefa.descricao}</span>
-      <span>{tarefa.concluida ? "Concluída" : "Ativa"}</span>
+      {renderizarTarefas()}
     </div>
   );
 }
