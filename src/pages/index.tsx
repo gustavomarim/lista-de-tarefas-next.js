@@ -1,4 +1,4 @@
-import Selecao from "../components/lista/Selecao";
+import ListaItem from "../components/lista/ListaItem";
 
 export default function Home() {
 
@@ -8,8 +8,12 @@ export default function Home() {
       text-white  bg-gradient-to-tr from-gray-600  to-gray-900
       h-screen
     `}>
-      <Selecao valor={true} />
-      <Selecao valor={false} />
+      <ul>
+        <ListaItem valor="Exemplo de Item #01" concluido={false}
+          alterarStatus={() => { console.log("alterarStatus") }} />
+        <ListaItem valor="Exemplo de Item #02" concluido={true}
+          alterarStatus={() => { console.log("alterarStatus") }} />
+      </ul>
     </div>
   );
 }
