@@ -39,9 +39,10 @@ export default function Lista(props: ListaProps) {
                 {renderizarTarefas()}
                 <li className="p-5">
                     <ListaBotao selecionado={true}
-                        onclick={() => {""}}
-                    />
-                    
+                        onClick={() => { "" }}>
+                            Todas
+                    </ListaBotao>
+
                 </li>
             </ul>
         </div>
