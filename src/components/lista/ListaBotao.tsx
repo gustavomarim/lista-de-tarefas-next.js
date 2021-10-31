@@ -5,7 +5,6 @@ interface ListaBotaoProps {
     onclick: () => void;
 }
 
-
 export default function ListaBotao(props: ListaBotaoProps) {
 
     const borda = props.selecionado ? 'border-purple-400' : '';
