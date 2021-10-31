@@ -1,3 +1,4 @@
+import ListaBotao from "./ListaBotao";
 import ListaTarefas from "../../model/ListaTarefas";
 
 interface ListaRodapeProps {
@@ -20,22 +21,47 @@ export default function ListaRodape(props: ListaRodapeProps) {
                             ? " Tarefa Encontrada"
                             : " Tarefas Encontradas"}
                 </span>
-                <span>
-
-                </span>
+                <span className="flex-1 hidden lg:inline"></span>
             </>
         );
     }
 
     function renderizarBotoesFiltro() {
         return (
-            <div></div>
+            <>
+                <ListaBotao
+                    selecionado={tarefas.exibindoTodas()}
+                    onClick={() => mudou(tarefas.removerFiltro())}
+                    className="hidden md:inline"
+                >
+                    Todas
+                </ListaBotao>
+                <ListaBotao
+                    selecionado={tarefas.exibindoSomenteAtivas()}
+                    onClick={() => mudou(tarefas.filtrarAtivas())}
+                    className="mx-4"
+                >
+                    Ativas
+                </ListaBotao>
+                <ListaBotao
+                    selecionado={tarefas.exibindoSomenteConcluidas()}
+                    onClick={() => mudou(tarefas.filtrarConcluidas())}
+                >
+                    Concluidas
+                </ListaBotao>
+            </>
         );
     }
 
     function renderizarExcluirConcluidas() {
         return (
-            <div></div>
+            <>
+            <span className="flex-grow"></span>
+                <ListaBotao
+                    onClick={() => mudou(tarefas.excluirConcluidas())}>
+                    Excluir <span className="hidden md:inline">Concluídas</span>
+                </ListaBotao>
+            </>
         );
     }
 
