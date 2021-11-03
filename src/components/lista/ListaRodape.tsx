@@ -56,7 +56,7 @@ export default function ListaRodape(props: ListaRodapeProps) {
     function renderizarExcluirConcluidas() {
         return (
             <>
-            <span className="flex-grow"></span>
+                <span className="flex-grow"></span>
                 <ListaBotao
                     onClick={() => mudou(tarefas.excluirConcluidas())}>
                     Excluir <span className="hidden md:inline">Concluídas</span>
